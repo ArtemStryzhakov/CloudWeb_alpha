@@ -8,6 +8,8 @@ namespace CloudWeb.Models
         public int id { get; set; }
         public string nameCompany { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime basingDate { get; set; }
         public string Location { get; set; }
         public string directorName { get; set; }

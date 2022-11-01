@@ -21,7 +21,7 @@ namespace CloudWeb.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var db = _context.Order.Include(o => o.ProductName).Include(o => o.whoseOrder);
+            var db = _context.Order.Include(o => o.ProductName).Include(o => o.Team).Include(o => o.whoseOrder);
             return View(await db.ToListAsync());
         }
 
@@ -35,6 +35,7 @@ namespace CloudWeb.Controllers
 
             var order = await _context.Order
                 .Include(o => o.ProductName)
+                .Include(o => o.Team)
                 .Include(o => o.whoseOrder)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
@@ -49,6 +50,7 @@ namespace CloudWeb.Controllers
         public IActionResult Create()
         {
             ViewData["productId"] = new SelectList(_context.Product, "Id", "productName");
+            ViewData["teamId"] = new SelectList(_context.Team, "Id", "TeamName");
             ViewData["customerId"] = new SelectList(_context.Customer, "Id", "Surname");
             return View();
         }
@@ -58,7 +60,7 @@ namespace CloudWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,productId,customerId,deadLine")] Order order)
+        public async Task<IActionResult> Create([Bind("Id,teamId,productId,customerId,deadLine")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -67,6 +69,7 @@ namespace CloudWeb.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["productId"] = new SelectList(_context.Product, "Id", "productName", order.productId);
+            ViewData["teamId"] = new SelectList(_context.Team, "Id", "TeamName", order.teamId);
             ViewData["customerId"] = new SelectList(_context.Customer, "Id", "Surname", order.customerId);
             return View(order);
         }
@@ -85,6 +88,7 @@ namespace CloudWeb.Controllers
                 return NotFound();
             }
             ViewData["productId"] = new SelectList(_context.Product, "Id", "productName", order.productId);
+            ViewData["teamId"] = new SelectList(_context.Team, "Id", "TeamName", order.teamId);
             ViewData["customerId"] = new SelectList(_context.Customer, "Id", "Surname", order.customerId);
             return View(order);
         }
@@ -94,7 +98,7 @@ namespace CloudWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,productId,customerId,deadLine")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,teamId,productId,customerId,deadLine")] Order order)
         {
             if (id != order.Id)
             {
@@ -122,6 +126,7 @@ namespace CloudWeb.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["productId"] = new SelectList(_context.Product, "Id", "productName", order.productId);
+            ViewData["teamId"] = new SelectList(_context.Team, "Id", "TeamName", order.teamId);
             ViewData["customerId"] = new SelectList(_context.Customer, "Id", "Surname", order.customerId);
             return View(order);
         }
@@ -136,6 +141,7 @@ namespace CloudWeb.Controllers
 
             var order = await _context.Order
                 .Include(o => o.ProductName)
+                .Include(o => o.Team)
                 .Include(o => o.whoseOrder)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)

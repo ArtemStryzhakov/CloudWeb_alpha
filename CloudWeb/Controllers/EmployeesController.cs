@@ -21,7 +21,7 @@ namespace CloudWeb.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            var db = _context.Employee.Include(e => e.Teams);
+            var db = _context.Employee.Include(e => e.Team);
             return View(await db.ToListAsync());
         }
 
@@ -34,7 +34,7 @@ namespace CloudWeb.Controllers
             }
 
             var employee = await _context.Employee
-                .Include(e => e.Teams)
+                .Include(e => e.Team)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {
@@ -130,7 +130,7 @@ namespace CloudWeb.Controllers
             }
 
             var employee = await _context.Employee
-                .Include(e => e.Teams)
+                .Include(e => e.Team)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (employee == null)
             {

@@ -11,8 +11,8 @@ namespace CloudWeb.Models
         public enum developerSpec { Backend_Developer, Frontend_Developer, Designer, QA_Speсialist }
         public developerSpec Specialization { get; set; }
         
-        [ForeignKey("Teams")]
+        [ForeignKey("Team")]
         public int teamId { get; set; }
-        public Team? Teams { get; set; }
+        public Team? Team { get; set; }
     }
 }
