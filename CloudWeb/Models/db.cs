@@ -7,8 +7,6 @@ namespace CloudWeb.Models
     {
         public static bool value = true;
         public db(DbContextOptions<db> options) : base(options) {
-            /*Database.EnsureDeleted();
-            Database.EnsureCreated();*/
 
             if (value)
             {

@@ -16,3 +16,18 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+#tempDiv {
+    display: flex;
+    margin-right: 80px;
+    gap: 5px;
+}
+
+#cityName {
+    margin-top: 12.5px;
+}
+
+#temp {
+    margin-top: 12.5px;
+    margin-left: 5px;
+}
