@@ -9,7 +9,6 @@ html {
 }
 
 html {
-  position: relative;
   min-height: 100%;
 }
 
@@ -30,4 +29,36 @@ body {
 #temp {
     margin-top: 12.5px;
     margin-left: 5px;
+}
+
+/* ===== CSS FOR NEWS ===== */
+
+#container {
+    position: relative;
+    display: flex;
+    gap: 5em;
+}
+
+#newsContainer {
+    height: 50%;
+    width: 800px;
+    box-shadow: 3px 3px 3px 3px black;
+    background-color: rgb(240, 240, 240);
+    padding: 10px;
+}
+
+.btn {
+    background-color: #7c7c7c2b;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+}
+
+#requiredContainer {
+    height: 40%;
+    width: 300px;
+    box-shadow: 3px 3px 3px 3px black;
+    background-color: rgb(240, 240, 240);
+    
 }
