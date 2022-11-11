@@ -25,9 +25,7 @@ const descriptionDisplay = document.querySelector("#description");
 const urlToImageDisplay = document.querySelector("#urltoImage");
 
 const inputText = document.querySelector("#inputText");
-const btn = document.querySelector("#btn");
-
-let articleNumber = 0;
+const btn = document.querySelector("#btnEnter");
 
 const btnBack = document.querySelector("#back");
 const btnForward = document.querySelector("#forward");
@@ -36,48 +34,59 @@ const btnForward = document.querySelector("#forward");
 
 // ===================================================//
 
+const list = document.querySelector("#listOfCategories");
+const links = document.querySelectorAll("#listOfCategories button")
+
+let articleNumber = 0;
+let getRequestingArticle;
+
+// === Buttons === //
+links.forEach(links => links.addEventListener("click", (event) => {
+    btnForward.disabled = false;
+    btnBack.disabled = true;
+    articleNumber = 0;
+    getRequestingArticle = event.target.innerHTML;
+    displayNews(getRequestingArticle, currentDate, APIs.newsApi, articleNumber)
+    console.log(event.target.innerHTML)
+}))
+
+// === "Enter" button === //
 btn.addEventListener("click", () => {
     btnForward.disabled = false;
-    displayNews(inputText.value, currentDate, APIs.newsApi, articleNumber)
+    btnBack.disabled = true;
+    articleNumber = 0;
+    getRequestingArticle = inputText.value;
+    displayNews(getRequestingArticle, currentDate, APIs.newsApi, articleNumber)
+})
+
+// === InputText Request === //
+inputText.addEventListener("keyup", (event) => {
+    if (event.key == "Enter") {
+        btnForward.disabled = false;
+        btnBack.disabled = true;
+        articleNumber = 0;
+        getRequestingArticle = event.target.innerHTML;
+        displayNews(getRequestingArticle, currentDate, APIs.newsApi, articleNumber)
+    }
 })
 
 btnBack.addEventListener("click", () => {
-    if (articleNumber > 0) {
-        articleNumber--;
-    } 
+    if (articleNumber > 0) articleNumber--;
 
-    if (articleNumber > 0) {
-        btnBack.disabled = false;
-    } else {
-        btnBack.disabled = true;
-    }
+    (articleNumber > 0) ? btnBack.disabled = false : btnBack.disabled = true;
+    (articleNumber > 4) ? btnForward.disabled = true : btnForward.disabled = false;
 
-    if (articleNumber > 4) {
-        btnForward.disabled = true;
-    } else {
-        btnForward.disabled = false;
-    }
-    displayNews(inputText.value, currentDate, APIs.newsApi, articleNumber)
+    displayNews(getRequestingArticle, currentDate, APIs.newsApi, articleNumber)
 })
 
 
 btnForward.addEventListener("click", () => {
-    if (articleNumber < 4) {
-        articleNumber++
-    }
+    if (articleNumber < 4) articleNumber++;
 
-    if (articleNumber > 0) {
-        btnBack.disabled = false;
-    } else {
-        btnBack.disabled = true;
-    }
+    (articleNumber > 0) ? btnBack.disabled = false : btnBack.disabled = true;
+    (articleNumber < 4) ? btnForward.disabled = false : btnForward.disabled = true;
 
-    if (articleNumber < 4) {
-        btnForward.disabled = false;
-    } else {
-        btnForward.disabled = true;
-    }
-    displayNews(inputText.value, currentDate, APIs.newsApi, articleNumber)
+    displayNews(getRequestingArticle, currentDate, APIs.newsApi, articleNumber)
 })
 
 
@@ -96,10 +105,3 @@ async function displayNews(insertData, currentDate, apiUrl, articleNumb) {
         console.log("Error to find article name.")
     }
 }
-
-const list = document.querySelector("#listOfCategories");
-
-for (const items in list) {
-    console.log(list.children[items].lastChild.innerHTML)
-}
-//console.log(list[0].lastChild.innerHTML)
