@@ -27,6 +27,7 @@ const urlToImageDisplay = document.querySelector("#urltoImage");
 const inputText = document.querySelector("#inputText");
 const btn = document.querySelector("#btnEnter");
 
+
 const btnBack = document.querySelector("#back");
 const btnForward = document.querySelector("#forward");
 
@@ -103,5 +104,9 @@ async function displayNews(insertData, currentDate, apiUrl, articleNumb) {
         urltoImage.src = urlToImage;
     } catch (err) {
         console.log("Error to find article name.")
+        titleDisplay.innerHTML = "Error to find article name.";
+        descriptionDisplay.innerHTML = "";
+        urltoImage.src = "";
+        btnForward.disabled = true;
     }
 }

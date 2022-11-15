@@ -53,13 +53,18 @@ body {
     padding: 10px;
 }
 
-.btn {
+.btnSelect {
     background-color: rgb(220, 71, 22);
     border-radius: 100%;
     width: 60px;
     height: 60px;
     font-size: 30px;
     margin: 5px;
+    border: none;
+}
+
+.btnSelect:disabled {
+    background-color: rgba(220, 71, 22, 0.6);
 }
 
 #requiredContainer {
