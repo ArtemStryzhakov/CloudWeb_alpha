@@ -1,6 +1,9 @@
 ﻿using CloudWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Net.Mail;
+using System.Net;
+using System.IO;
 
 namespace CloudWeb.Controllers
 {
@@ -18,10 +21,6 @@ namespace CloudWeb.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
         public IActionResult About()
         {
             return View();

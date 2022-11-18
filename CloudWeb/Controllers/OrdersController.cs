@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CloudWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CloudWeb.Controllers
 {
@@ -19,6 +20,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Orders
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var db = _context.Order.Include(o => o.ProductName).Include(o => o.Team).Include(o => o.whoseOrder);

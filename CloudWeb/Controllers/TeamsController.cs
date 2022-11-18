@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CloudWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CloudWeb.Controllers
 {
@@ -19,6 +20,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Teams
+        [Authorize]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Team.ToListAsync());
