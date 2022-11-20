@@ -20,7 +20,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Employees
-        [Authorize]
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Index()
         {
             var db = _context.Employee.Include(e => e.Team);

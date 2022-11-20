@@ -20,7 +20,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Products
-        [Authorize]
+        [Authorize(Policy = "readpolicy")]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Product.ToListAsync());
@@ -55,7 +55,7 @@ namespace CloudWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,productName,ProductType,Difficulty,progLanguages")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,productName,ProductType")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace CloudWeb.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,productName,ProductType,Difficulty,progLanguages")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,productName,ProductType")] Product product)
         {
             if (id != product.Id)
             {

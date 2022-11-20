@@ -20,7 +20,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Customers
-        [Authorize]
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Customer.ToListAsync());

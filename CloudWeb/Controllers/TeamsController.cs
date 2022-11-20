@@ -20,7 +20,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Teams
-        [Authorize]
+        [Authorize(Policy = "readpolicy")]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Team.ToListAsync());
@@ -45,6 +45,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Teams/Create
+        [Authorize(Policy = "writepolicy")]
         public IActionResult Create()
         {
             return View();
@@ -67,6 +68,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Teams/Edit/5
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Team == null)
@@ -118,6 +120,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Teams/Delete/5
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Team == null)

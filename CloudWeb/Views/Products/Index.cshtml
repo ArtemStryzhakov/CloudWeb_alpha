@@ -19,12 +19,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ProductType)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Difficulty)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.progLanguages)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -36,12 +30,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ProductType)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Difficulty)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.progLanguages)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

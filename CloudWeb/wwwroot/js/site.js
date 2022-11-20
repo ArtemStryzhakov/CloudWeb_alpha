@@ -67,6 +67,7 @@ inputText.addEventListener("keyup", (event) => {
         btnBack.disabled = true;
         articleNumber = 0;
         getRequestingArticle = event.target.innerHTML;
+        console.log(getRequestingArticle)
         displayNews(getRequestingArticle, currentDate, APIs.newsApi, articleNumber)
     }
 })

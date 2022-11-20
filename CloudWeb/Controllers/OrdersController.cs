@@ -20,7 +20,7 @@ namespace CloudWeb.Controllers
         }
 
         // GET: Orders
-        [Authorize]
+        [Authorize(Policy = "writepolicy")]
         public async Task<IActionResult> Index()
         {
             var db = _context.Order.Include(o => o.ProductName).Include(o => o.Team).Include(o => o.whoseOrder);
@@ -68,6 +68,8 @@ namespace CloudWeb.Controllers
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
+                Service service = new Service();
+                service.SendEmailDefault();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["productId"] = new SelectList(_context.Product, "Id", "productName", order.productId);
