@@ -8,13 +8,14 @@
 (async function getApiData(api) {
     const getData = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=Tallinn&units=metric&appid=${api}`)
     const data = await getData.json();
+    console.log(data)
 
     const { icon } = data.weather[0];
     const { temp } = data.main;
 
     document.querySelector("#temp").innerHTML = `${temp.toFixed(0)}°C`;
     document.querySelector("#image").src = `https://openweathermap.org/img/wn/${icon}.png`;
-})(APIs.weatherApi)
+})(APIs.weatherApi);
 
 // ===== NEWS ===== //
 
@@ -111,3 +112,6 @@ async function displayNews(insertData, currentDate, apiUrl, articleNumb) {
         btnForward.disabled = true;
     }
 }
+
+const scrollPoint = document.querySelector("#customRange2");
+scrollPoint.addEventListener("change", (event) => document.querySelector("#formLabel").innerHTML = event.target.value);

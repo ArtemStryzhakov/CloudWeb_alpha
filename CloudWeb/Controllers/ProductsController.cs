@@ -66,6 +66,32 @@ namespace CloudWeb.Controllers
             return View(product);
         }
 
+        // GET: Products/Create
+        public IActionResult Create2()
+        {
+            return View();
+        }
+
+        // POST: Products/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create2([Bind("Id,productName,ProductType")] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(product);
+                await _context.SaveChangesAsync();
+                Service service = new Service();
+                try {
+                    service.SendEmailDefault(product.productName, "Test zakaz amogus", User.Identity.Name);
+                } catch (Exception) { }
+                return RedirectToAction(actionName: "About", controllerName: "Home");
+            }
+            return View(product);
+        }
+
         // GET: Products/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {

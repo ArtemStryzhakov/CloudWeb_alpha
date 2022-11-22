@@ -5,30 +5,23 @@ namespace CloudWeb.Models
 {
     public class Service
     {
-        public async void SendEmailDefault()
+        public async void SendEmailDefault(string Subject, string Body, string recipient)
         {
-            try
+            SmtpClient SmtpServer = new SmtpClient("smtp.office365.com");
+            var mailMessage = new MailMessage()
             {
-                MailMessage message = new MailMessage();
-                message.IsBodyHtml = true;
-                message.From = new MailAddress("irina1223148@outlook.com", "Моя компания");
-                message.To.Add("irina1223148@outlook.com"); //адресат сообщения
-                message.Subject = "Сообщение от System.Net.Mail"; //тема сообщения
-                message.Body = "<div style=\"color: red;\">Сообщение для тупого тестирования</div>";
-                //message.Attachments.Add(new Attachment("... путь к файлу ...")); 
-
-                var client = new SmtpClient("smtp.mailtrap.io", 2525)
-                {
-                    Credentials = new NetworkCredential("16285c1bbabdd1", "f9122b3e2925fd"),
-                    EnableSsl = true
-                };
-                client.Send(message);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                // logger.LogError(e.GetBaseException().Message);
-            }
+                From = new MailAddress("testamogus123@hotmail.com"),
+                Subject = Subject,
+                Body = Body,
+                IsBodyHtml = true
+            };
+            mailMessage.Body = Body;
+            mailMessage.To.Add(recipient);
+            SmtpServer.Port = 587;
+            SmtpServer.UseDefaultCredentials = false;
+            SmtpServer.EnableSsl = true;
+            SmtpServer.Credentials = new NetworkCredential("testamogus123@hotmail.com", "AmogusGaming228");
+            SmtpServer.Send(mailMessage);
         }
     }
 }
