@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using CloudWeb.Models;
 using static CloudWeb.Models.Product;
+using System.Diagnostics;
 
 namespace CloudWeb.Models
 {
@@ -33,6 +34,7 @@ namespace CloudWeb.Models
                     id = 1,
                     nameCompany = "WevStorm",
                     Location = "Tallinn",
+                    basingDate = DateTime.Now,
                     directorName = "Arnold",
                     directorSurname = "Aghh",
                     productType = (Company.branch)productType.Website

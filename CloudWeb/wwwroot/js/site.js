@@ -24,6 +24,8 @@ const currentDate = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
 const titleDisplay = document.querySelector("#title");
 const descriptionDisplay = document.querySelector("#description");
 const urlToImageDisplay = document.querySelector("#urltoImage");
+const publishedAtDisplay = document.querySelector("#publishedAt")
+const authorDisplay = document.querySelector("#author")
 
 const inputText = document.querySelector("#inputText");
 const btn = document.querySelector("#btnEnter");
@@ -67,8 +69,7 @@ inputText.addEventListener("keyup", (event) => {
         btnForward.disabled = false;
         btnBack.disabled = true;
         articleNumber = 0;
-        getRequestingArticle = event.target.innerHTML;
-        console.log(getRequestingArticle)
+        getRequestingArticle = event.target.value;
         displayNews(getRequestingArticle, currentDate, APIs.newsApi, articleNumber)
     }
 })
@@ -99,11 +100,13 @@ async function displayNews(insertData, currentDate, apiUrl, articleNumb) {
         const data = await response.json();
         console.log(data)
 
-        const { title, description, urlToImage } = data.articles[articleNumb];
+        const { title, description, urlToImage, author, publishedAt } = data.articles[articleNumb];
 
         titleDisplay.innerHTML = title;
         descriptionDisplay.innerHTML = description;
         urltoImage.src = urlToImage;
+        publishedAtDisplay.innerHTML = publishedAt.split("T")[0];
+        authorDisplay.innerHTML = author;
     } catch (err) {
         console.log("Error to find article name.")
         titleDisplay.innerHTML = "Error to find article name.";
@@ -112,6 +115,3 @@ async function displayNews(insertData, currentDate, apiUrl, articleNumb) {
         btnForward.disabled = true;
     }
 }
-
-const scrollPoint = document.querySelector("#customRange2");
-scrollPoint.addEventListener("change", (event) => document.querySelector("#formLabel").innerHTML = event.target.value);

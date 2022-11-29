@@ -41,12 +41,6 @@ body {
     gap: 5em;
 }
 
-.newsDiv {
-    border-radius: 30px;
-    box-shadow: 3px 3px 3px 3px #606060;
-    background-color: rgb(240, 240, 240);
-}
-
 #newsContainer {
     height: 50%;
     width: 800px;
@@ -68,9 +62,32 @@ body {
     background-color: rgba(220, 71, 22, 0.6);
 }
 
+#btnNews {
+    margin-right: 20px;
+}
+
+#showNews {
+    position: absolute;
+    left: 10%;
+    top: 10px;
+    width: 80%;
+}
+
 #requiredContainer {
-    height: 40%;
-    width: 300px;    
+    position: absolute;
+    left: 10%;
+    bottom: 10px;
+    height: auto;
+    width: 320px;
+    border: 1px solid rgb(220, 220, 220);
+    background-color: white;
+}
+
+#inputContainer {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
 #btnEnter {

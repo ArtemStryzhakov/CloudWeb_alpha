@@ -5,31 +5,28 @@
 <div class="text-center">
     <h1>About us</h1>
     <p>CloudWeb - software development company, which develops highly specialized software, websites and also special tools for managment your own projects.</p>
-    <div id="container">
-        <div id="newsContainer" class="newsDiv">
-            <button id="back" class="btnSelect">&#11178;</button>
-            <button id="forward" class="btnSelect">&#11179;</button>
-            <hr />
-            <h2 id="title">Google news</h2>
-            <p id="description">Elon Mask has crushed the Twitter.</p>
-            <img src="https://static.life.ru/publications/2022/7/19/691126209796.8171.jpeg" alt="image_is_null" id="urltoImage" width=300/>
-        </div>
-        <div id="requiredContainer" class="newsDiv">
-            <div id="inputContainer" style="margin-top: 10px;">
+
+    <!--<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Toggle right offcanvas</button>-->
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="text-align: center;">
+        <div id="showNews" class="card">
+            <img src="https://static.life.ru/publications/2022/7/19/691126209796.8171.jpeg" id="urltoImage" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title" id="title">Title</h5>
+                <p id="description" class="card-text"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li id="publishedAt" class="list-group-item">A second item</li>
+                <li id="author" class="list-group-item">A third item</li>
+            </ul>
+            <div class="card-body">
+                <button id="back" class="btnSelect">&#11178;</button>
+                <button id="forward" class="btnSelect">&#11179;</button>
+            </div>
+            <div id="inputContainer" style="margin-bottom: 10px;">
                 <input type="text" placeholder="Type article name..." id="inputText" />
                 <input type="button" value="&#10140;" id="btnEnter" />
             </div>
-            <p>News categories:</p>
-            <ul id="listOfCategories">
-                <li><button>Google</button></li>
-                <li><button>Sony</button></li>
-                <li><button>Microsoft</button></li>
-                <li><button>Apple</button></li>
-                <li><button>Twitter</button></li>
-            </ul>
         </div>
     </div>
-    <br/>
-    <label for="customRange2" class="form-label" id="formLabel">Example range</label>
-    <input type="range" class="form-range" min="0" max="5" id="customRange2">
 </div>
