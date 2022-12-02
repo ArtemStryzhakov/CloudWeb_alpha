@@ -85,7 +85,8 @@ namespace CloudWeb.Controllers
                 await _context.SaveChangesAsync();
                 Service service = new Service();
                 try {
-                    service.SendEmailDefault(product.productName, "Test zakaz amogus", User.Identity.Name);
+                    service.SendEmailDefault(product.productName, "Test zakaz amogus", User.Identity.Name, DateTime.Now.AddDays(2),
+                        DateTime.Now.AddDays(16).AddHours(1), product.productName, Convert.ToString(product.ProductType));
                 } catch (Exception) { }
                 return RedirectToAction(actionName: "About", controllerName: "Home");
             }

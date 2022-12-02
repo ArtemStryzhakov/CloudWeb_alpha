@@ -10,14 +10,14 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="About">CloudWeb</a>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3" style="background-color: rgb(220, 71, 22); max-height: 70px">
+            <div class="container-fluid" id="navbarContainer">
+                <a class="navbar-brand text-white" asp-area="" asp-controller="Home" asp-action="About">CloudWeb</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
                     <ul class="navbar-nav flex-grow-1">
                         <!--<li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -25,37 +25,36 @@
                         @if (User.IsInRole("Admin"))
                         {
                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Companies" asp-action="Index">Company</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Companies" asp-action="Index">Ettevõtte divisjon</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="Index">Employees</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Employees" asp-action="Index">Töötajad</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Teams" asp-action="Index">Team</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Teams" asp-action="Index">Meeskond</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">Customers</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Customers" asp-action="Index">Kliendid</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Products" asp-action="Index">Tooted</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">Orders</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Orders" asp-action="Index">Korraldusi</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="Index">Role</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Role" asp-action="Index">Rollid</a>
                             </li>
                         } else if (User.Identity.IsAuthenticated) {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Companies" asp-action="Index">Company</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Companies" asp-action="Index">Ettevõtte divisjon</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Create2">Products</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="Products" asp-action="Create2">Tooted</a>
                             </li>
                         }
                     </ul>
-                    
-                    <button id="btnNews" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">News</button>
+                    <button id="btnNews" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Uudised</button>
                     <div id="tempDiv">
                         <p id="cityName">Tallinn:</p>
                         <p id="temp"></p>
@@ -68,6 +67,27 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="text-align: center;">
+                <div id="showNews" class="card">
+                    <img src="https://static.life.ru/publications/2022/7/19/691126209796.8171.jpeg" id="urltoImage" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title" id="title">Title</h5>
+                        <p id="description" class="card-text"></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li id="publishedAt" class="list-group-item">A second item</li>
+                        <li id="author" class="list-group-item">A third item</li>
+                    </ul>
+                    <div class="card-body">
+                        <button id="back" class="btnSelect">&#11178;</button>
+                        <button id="forward" class="btnSelect">&#11179;</button>
+                    </div>
+                    <div id="inputContainer" style="margin-bottom: 10px;">
+                        <input type="text" placeholder="Type article name..." id="inputText" />
+                        <input type="button" value="&#10140;" id="btnEnter" />
+                    </div>
+                </div>
+            </div>
             @RenderBody()
         </main>
     </div>

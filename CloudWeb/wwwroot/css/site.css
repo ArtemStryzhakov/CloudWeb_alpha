@@ -16,12 +16,35 @@ body {
   margin-bottom: 60px;
 }
 
-/* ===== CSS FOR WEATHER ===== */
+#navbarContainer a {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 69px;
+    padding: 0px 7px;
+}
 
+#navbarContainer a:hover {
+    background-color: #FF8000;
+}
+
+#logoutBtn {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 69px;
+}
+
+#logoutBtn:hover {
+    background-color: #FF8000;
+}
+
+/* ===== CSS FOR WEATHER ===== */
 #tempDiv {
     display: flex;
     margin-right: 80px;
     gap: 5px;
+    color: white;
 }
 
 #cityName {

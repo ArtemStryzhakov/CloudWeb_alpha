@@ -10,7 +10,7 @@
 <p>
     @if (User.IsInRole("Admin"))
     {
-        <a asp-action="Create">Create New</a>
+        <a asp-action="Create">Loo uus</a>
     }
 </p>
 <table class="table">
@@ -60,11 +60,10 @@
             </td>
             <td>
                 @if (User.IsInRole("Admin")) {
-                    <a asp-action="Edit" asp-route-id="@item.id">Edit</a><span>|</span>
-                    <a asp-action="Details" asp-route-id="@item.id">Details</a><span>|</span>
-                    <a asp-action="Delete" asp-route-id="@item.id">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.id">Muuda</a><span>|</span>
+                    <a asp-action="Details" asp-route-id="@item.id">Üksikasjad</a><span>|</span>
+                    <a asp-action="Delete" asp-route-id="@item.id">Kustuta</a>
                 }
-                
             </td>
         </tr>
 }
