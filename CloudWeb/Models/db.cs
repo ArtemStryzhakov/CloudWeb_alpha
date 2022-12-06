@@ -11,12 +11,12 @@ namespace CloudWeb.Models
         public db(DbContextOptions<db> options) : base(options)
         {
 
-            /*if (value)
+            if (value)
             {
                 Database.EnsureDeleted();
                 value = false;
             } 
-            Database.EnsureCreated();*/
+            Database.EnsureCreated();
 
         }
         public DbSet<Company> Company { get; set; }

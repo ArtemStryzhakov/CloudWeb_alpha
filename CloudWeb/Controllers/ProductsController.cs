@@ -81,12 +81,16 @@ namespace CloudWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                Random rnd = new Random();
+                int day = rnd.Next(2, 6);
+                int hours = rnd.Next(1, 3);
+
                 _context.Add(product);
                 await _context.SaveChangesAsync();
                 Service service = new Service();
                 try {
-                    service.SendEmailDefault(product.productName, "Test zakaz amogus", User.Identity.Name, DateTime.Now.AddDays(2),
-                        DateTime.Now.AddDays(16).AddHours(1), product.productName, Convert.ToString(product.ProductType));
+                    service.SendEmailDefault(product.productName, "Test zakaz amogus", User.Identity.Name, DateTime.Now,
+                        DateTime.Now.AddDays(day).AddHours(hours), product.productName, Convert.ToString(product.ProductType));
                 } catch (Exception) { }
                 return RedirectToAction(actionName: "About", controllerName: "Home");
             }

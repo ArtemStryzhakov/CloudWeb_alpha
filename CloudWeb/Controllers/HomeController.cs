@@ -18,7 +18,7 @@ namespace CloudWeb.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View("About");
         }
 
         public IActionResult About()

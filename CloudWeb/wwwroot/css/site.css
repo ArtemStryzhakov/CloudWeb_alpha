@@ -13,7 +13,19 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url("https://cdn.wallpapersafari.com/84/15/Hqey1a.jpg");
+    font-family: Arial;
+}
+
+button {
+    background-color: #FF8000;
+    border-color: #FF8000;
+}
+
+#mainCont {
+    background-color: rgba(250, 250, 250, 0.5);
+    padding: 0px 15px;
 }
 
 #navbarContainer a {

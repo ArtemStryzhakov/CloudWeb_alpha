@@ -19,9 +19,6 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" >
                     <ul class="navbar-nav flex-grow-1">
-                        <!--<li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>-->
                         @if (User.IsInRole("Admin"))
                         {
                            <li class="nav-item">
@@ -54,7 +51,8 @@
                             </li>
                         }
                     </ul>
-                    <button id="btnNews" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Uudised</button>
+                    <button id="btnNews" style="background-color: #FF8000; border-color: #FF8000;" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Uudised</button>
+                    <button class="btn btn-primary" style="background-color: #FF8000; border-color: #FF8000; margin-right: 20px;" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">Kaart</button>
                     <div id="tempDiv">
                         <p id="cityName">Tallinn:</p>
                         <p id="temp"></p>
@@ -66,8 +64,17 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="text-align: center;">
+        <main role="main" class="pb-3" id="mainCont">     
+            <div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="width: 650px;">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Offcanvas with body scrolling</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4060.495499773091!2d24.704581064279182!3d59.41226213533823!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc372ff05bb27e9f4!2sTallinna%20T%C3%B6%C3%B6stushariduskeskus!5e0!3m2!1set!2see!4v1670319121476!5m2!1set!2see" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" style="text-align: center;"> 
                 <div id="showNews" class="card">
                     <img src="https://static.life.ru/publications/2022/7/19/691126209796.8171.jpeg" id="urltoImage" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -94,7 +101,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - CloudWeb - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - CloudWeb
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

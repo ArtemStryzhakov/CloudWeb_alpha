@@ -25,7 +25,7 @@ namespace CloudWeb.Models
             using (FileStream fs = File.Create("gmail.ics"))
             {
                 byte[] text = new UTF8Encoding(true).GetBytes(CreateICS.CreateICSFile(start, end, "CloudWeb ostes",
-                    $"Teie projekti nimi on {productName}, tüüp on {productType}."));
+                    $"Teie projekti nimi on {productName}, tüüp on {productType}. Meie juht võtab teiega ühendust {end.ToString("dd/MM/yyyy")}"));
                 fs.Write(text, 0, text.Length);
             }
             mailMessage.Attachments.Add(new Attachment("gmail.ics"));
