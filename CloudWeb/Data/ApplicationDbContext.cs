@@ -13,6 +13,7 @@ namespace CloudWeb.Data
             if (Roles.Where(p => p.Name == "User").FirstOrDefault() == null)
             {
                 var Role = new IdentityRole("User");
+                Role.NormalizedName = "USER";
                 this.Roles.Add(Role);
                 this.SaveChanges();
                 string email = "strizakov00@gmail.com", CapsEmail = "STRIZAKOV00@GMAIL.COM";
@@ -37,6 +38,7 @@ namespace CloudWeb.Data
             if (Roles.Where(p => p.Name == "Admin").FirstOrDefault() == null)
             {
                 var Role = new IdentityRole("Admin");
+                Role.NormalizedName = "ADMIN";
                 this.Roles.Add(Role);
                 this.SaveChanges();
                 string email = "Admin@gmail.com", CapsEmail = "ADMIN@GMAIL.COM";

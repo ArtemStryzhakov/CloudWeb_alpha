@@ -5,6 +5,7 @@
 @{
     ViewData["Title"] = "Register";
     var roles = (List<IdentityRole>?)ViewData["roles"];
+    roles.Reverse();
 }
 
 <h1 style="text-align: center;">@ViewData["Title"]</h1>
